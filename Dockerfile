@@ -75,7 +75,7 @@ RUN cd ${SRC_FOLDER} && \
     stage/bin/chemdict_tool create components.cif.gz compounds.chemlib pdb && stage/bin/chemdict_tool update ../modules/conop/data/charmm.cif compounds.chemlib charmm && \
     cmake .. -DCOMPOUND_LIB=${SRC_FOLDER}/openstructure-${OPENSTRUCTURE_VERSION}/build/compounds.chemlib && \
              make -j ${CPUS_FOR_MAKE} && make check && make install && \
-    rm ${SRC_FOLDER}/openstructure-${OPENSTRUCTURE_VERSION}.tar.gz && \
+    rm ${SRC_FOLDER}/openstructure-${OPENSTRUCTURE_VERSION}.tar.gz
     #rm -rf ${SRC_FOLDER}/openstructure-${OPENSTRUCTURE_VERSION}
 
 # INSTALL MUSTANG
@@ -105,18 +105,16 @@ RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |
 COPY install_rpaks.R .
 RUN Rscript install_rpaks.R
 
-
-
 # ENVIRONMENT
 #############
 WORKDIR /home
 ENV OST_ROOT="/usr/local"
 ENV PYTHONPATH="/usr/local/lib64/python3.8/site-packages"
-ENV PYTHONPATH="/Users/openstructure/stage/lib/python3.9/site-packages:$PYTHONPATH"
+ENV PYTHONPATH="/usr/local/src/openstructure-2.3.1/build/stage/lib64/python3.8/site-packages:$PYTHONPATH"
 ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib64:/usr/local/openmm/lib/"
 ENV OPENSTRUCTURE_VERSION=$OPENSTRUCTURE_VERSION
 ENV PATH="$OST_ROOT:${PATH}"
-ENV PATH="//MUSTANG_v3.2.3/bin/:${PATH}"
+ENV PATH="/MUSTANG_v3.2.3/bin/:${PATH}"
 
 EXPOSE 8900
 CMD jupyter lab --no-browser --port 8900 --allow-root --ip 0.0.0.0
