@@ -5,3 +5,4 @@ seaborn
 jupyterlab
 biopython
 openpyxl
+prody
