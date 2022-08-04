@@ -2,7 +2,7 @@ paks<-c("dplyr", "ggplot2", "bio3d", "IRkernel", "pheatmap", "jsonlite", "reshap
 
 install.packages("BiocManager")
 
-BiocManager::install(version = "3.14")
+BiocManager::install(version = "3.15")
 BiocManager::install(paks)
 
 IRkernel::installspec()
