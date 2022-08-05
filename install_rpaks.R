@@ -1,4 +1,4 @@
-paks<-c("dplyr", "ggplot2", "bio3d", "IRkernel", "pheatmap", "jsonlite", "reshape2")
+paks<-c("dplyr", "ggplot2", "bio3d", "IRkernel", "pheatmap", "jsonlite", "reshape2", "reticulate")
 
 install.packages("BiocManager")
 
